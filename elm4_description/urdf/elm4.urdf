@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<robot name="elm4" xmlns:xacro="http://ros.org/wiki/xacro">
+ 
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://elm4_description/meshes/Base.dae" scale="1 1 1" />
+      </geometry>
+    </visual>
+    <visual><!--front left arm-->
+      <origin xyz=".263 .238 .029" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://elm4_description/meshes/ArmLeft.dae" scale="1 1 1" />
+      </geometry>
+    </visual><!--front left wheel-->
+    <visual>
+      <origin xyz="0.38161 0.333 -0.04553" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://elm4_description/meshes/HubMotorWheel.dae" scale="1 1 1" />
+      </geometry>
+    </visual>
+    
+    <visual><!--back left arm-->
+      <origin xyz="-.263 -.238 .029" rpy="0 0 3.14159265359"/>
+      <geometry>
+        <mesh filename="package://elm4_description/meshes/ArmLeft.dae" scale="1 1 1" />
+      </geometry>
+    </visual><!--back left wheel-->
+    <visual>
+      <origin xyz="-0.14439 -0.143 -0.04553" rpy="0 0 3.14159265359"/>
+      <geometry>
+        <mesh filename="package://elm4_description/meshes/HubMotorWheel.dae" scale="1 1 1" />
+      </geometry>
+    </visual>
+    
+    <visual><!--front right arm-->
+      <origin xyz=".263 -.238 .029" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://elm4_description/meshes/ArmRight.dae" scale="1 1 1" />
+      </geometry>
+    </visual><!--front right wheel-->
+    <visual>
+      <origin xyz="0.38161 -0.333 -0.04553" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://elm4_description/meshes/HubMotorWheel.dae" scale="1 1 1" />
+      </geometry>
+    </visual>
+  
+    <visual><!--back right arm-->
+      <origin xyz="-.263 .238 .029" rpy="0 0 3.14159265359"/>
+      <geometry>
+        <mesh filename="package://elm4_description/meshes/ArmRight.dae" scale="1 1 1" />
+      </geometry>
+    </visual><!--back right wheel-->
+    <visual>
+      <origin xyz="-0.14439 0.143 -0.04553" rpy="0 0 3.14159265359"/>
+      <geometry>
+        <mesh filename="package://elm4_description/meshes/HubMotorWheel.dae" scale="1 1 1" />
+      </geometry>
+    </visual>
+  
+  </link>
+  
+
+  <link name="base_footprint"/>
+
+  <link name="rplidar_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://elm4_description/meshes/rplidar.dae" scale="1 1 1" />
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="/link/rplidar_link/sensor/rplidar/scan"/>
+
+  <joint name="rplidar_joint2" type="fixed">
+    <parent link="rplidar_link"/>
+    <child link="/link/rplidar_link/sensor/rplidar/scan"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  </joint>
+
+  <joint name="base_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="base_footprint"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  </joint>
+
+  <joint name="rplidar_joint" type="fixed">
+    <origin xyz="0 0 .715" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="rplidar_link"/>
+  </joint>
+
+</robot>
