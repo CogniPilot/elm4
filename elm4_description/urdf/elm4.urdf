@@ -8,12 +8,12 @@
         <mesh filename="package://elm4_description/meshes/Base.dae" scale="1 1 1" />
       </geometry>
     </visual>
-    <visual><!--front left arm-->
+    <visual>
       <origin xyz=".263 .238 .029" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://elm4_description/meshes/ArmLeft.dae" scale="1 1 1" />
       </geometry>
-    </visual><!--front left wheel-->
+    </visual>
     <visual>
       <origin xyz="0.38161 0.333 -0.04553" rpy="0 0 0"/>
       <geometry>
@@ -21,25 +21,25 @@
       </geometry>
     </visual>
     
-    <visual><!--back left arm-->
+    <visual>
       <origin xyz="-.263 -.238 .029" rpy="0 0 3.14159265359"/>
       <geometry>
         <mesh filename="package://elm4_description/meshes/ArmLeft.dae" scale="1 1 1" />
       </geometry>
-    </visual><!--back left wheel-->
+    </visual>
     <visual>
-      <origin xyz="-0.14439 -0.143 -0.04553" rpy="0 0 3.14159265359"/>
+      <origin xyz="-0.38161 -0.333 -0.04553" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://elm4_description/meshes/HubMotorWheel.dae" scale="1 1 1" />
       </geometry>
     </visual>
     
-    <visual><!--front right arm-->
+    <visual>
       <origin xyz=".263 -.238 .029" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://elm4_description/meshes/ArmRight.dae" scale="1 1 1" />
       </geometry>
-    </visual><!--front right wheel-->
+    </visual>
     <visual>
       <origin xyz="0.38161 -0.333 -0.04553" rpy="0 0 0"/>
       <geometry>
@@ -54,7 +54,7 @@
       </geometry>
     </visual><!--back right wheel-->
     <visual>
-      <origin xyz="-0.14439 0.143 -0.04553" rpy="0 0 3.14159265359"/>
+      <origin xyz="-0.38161 0.333 -0.04553" rpy="0 0 3.14159265359"/>
       <geometry>
         <mesh filename="package://elm4_description/meshes/HubMotorWheel.dae" scale="1 1 1" />
       </geometry>
@@ -85,11 +85,11 @@
   <joint name="base_joint" type="fixed">
     <parent link="base_link"/>
     <child link="base_footprint"/>
-    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+    <origin xyz="0.0 0.0 -.15" rpy="0 0 0"/>
   </joint>
 
   <joint name="rplidar_joint" type="fixed">
-    <origin xyz="0 0 .715" rpy="0 0 0"/>
+    <origin xyz="0 0 .22" rpy="0 0 0"/>
     <parent link="base_link"/>
     <child link="rplidar_link"/>
   </joint>
