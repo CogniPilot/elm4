@@ -65,7 +65,7 @@
 
   <link name="base_footprint"/>
 
-  <link name="rplidar_link">
+  <link name="lidar_link">
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
@@ -74,13 +74,20 @@
     </visual>
   </link>
 
-  <link name="/link/rplidar_link/sensor/rplidar/scan"/>
+  <link name="/link/lidar_link/sensor/lidar/scan"/>
+  <!-- <link name="/scan"/> -->
 
-  <joint name="rplidar_joint2" type="fixed">
-    <parent link="rplidar_link"/>
-    <child link="/link/rplidar_link/sensor/rplidar/scan"/>
+  <joint name="lidar_joint2" type="fixed">
+    <parent link="lidar_link"/>
+    <child link="/link/lidar_link/sensor/lidar/scan"/>
     <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
   </joint>
+
+<!--   <joint name="lidar_joint1" type="fixed">
+    <parent link="lidar_link"/>
+    <child link="/scan"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  </joint> -->
 
   <joint name="base_joint" type="fixed">
     <parent link="base_link"/>
@@ -88,10 +95,10 @@
     <origin xyz="0.0 0.0 -.15" rpy="0 0 0"/>
   </joint>
 
-  <joint name="rplidar_joint" type="fixed">
+  <joint name="lidar_joint0" type="fixed">
     <origin xyz="0 0 .22" rpy="0 0 0"/>
     <parent link="base_link"/>
-    <child link="rplidar_link"/>
+    <child link="lidar_link"/>
   </joint>
 
 </robot>
