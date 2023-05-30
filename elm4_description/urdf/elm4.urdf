@@ -67,9 +67,9 @@
 
   <link name="lidar_link">
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 -.028" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://elm4_description/meshes/rplidar.dae" scale="1 1 1" />
+        <mesh filename="package://elm4_description/meshes/STL27L.dae" scale="1 1 1" />
       </geometry>
     </visual>
   </link>
@@ -96,7 +96,7 @@
   </joint>
 
   <joint name="lidar_joint0" type="fixed">
-    <origin xyz="0 0 .22" rpy="0 0 0"/>
+    <origin xyz="0 0 .2" rpy="0 0 0"/>
     <parent link="base_link"/>
     <child link="lidar_link"/>
   </joint>
