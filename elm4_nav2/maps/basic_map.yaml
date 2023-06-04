@@ -1,4 +1,4 @@
-image: elm4map.pgm
+image: basic_map.pgm
 mode: trinary
 resolution: 0.04
 origin: [0.0, 0.0, 0]

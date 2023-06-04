@@ -75,19 +75,12 @@
   </link>
 
   <link name="/link/lidar_link/sensor/lidar/scan"/>
-  <!-- <link name="/scan"/> -->
 
   <joint name="lidar_joint2" type="fixed">
     <parent link="lidar_link"/>
     <child link="/link/lidar_link/sensor/lidar/scan"/>
     <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
   </joint>
-
-  <!-- <joint name="lidar_joint1" type="fixed">
-    <parent link="lidar_link"/>
-    <child link="/scan"/>
-    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
-  </joint> -->
 
   <joint name="base_joint" type="fixed">
     <parent link="base_link"/>
