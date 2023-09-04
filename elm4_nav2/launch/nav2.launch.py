@@ -12,6 +12,9 @@ ARGUMENTS = [
     DeclareLaunchArgument('use_sim_time', default_value='true',
                           choices=['true', 'false'],
                           description='Use sim time'),
+    DeclareLaunchArgument('log_level', default_value='error',
+                          choices=['info', 'warn', 'error'],
+                          description='log level'),
 ]
 
 
@@ -42,6 +45,7 @@ def generate_launch_description():
                     [pkg_nav2_bringup, 'launch', 'navigation_launch.py'])),
             launch_arguments={'use_sim_time': use_sim_time,
                               'use_composition': 'False',
+                              'log_level': LaunchConfiguration('log_level'),
                               'params_file': LaunchConfiguration('params_file')}.items()),
     ])
 

@@ -18,7 +18,10 @@ ARGUMENTS = [
                           choices=['true', 'false'],
                           description='Use synchronous SLAM'),
     DeclareLaunchArgument('namespace', default_value='',
-                          description='Robot namespace')
+                          description='Robot namespace'),
+    DeclareLaunchArgument('log_level', default_value='error',
+                          choices=['info', 'warn', 'error'],
+                          description='log level'),
 ]
 
 
@@ -60,6 +63,7 @@ def generate_launch_description():
                slam_params,
                {'use_sim_time': LaunchConfiguration('use_sim_time')}
              ],
+             arguments=['--ros-args', '--log-level', LaunchConfiguration('log_level')],
              remappings=remappings,
              condition=IfCondition(sync)),
 
@@ -71,6 +75,7 @@ def generate_launch_description():
                slam_params,
                {'use_sim_time': LaunchConfiguration('use_sim_time')}
              ],
+             arguments=['--ros-args', '--log-level', LaunchConfiguration('log_level')],
              remappings=remappings,
              condition=UnlessCondition(sync))
     ])

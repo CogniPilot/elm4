@@ -11,6 +11,16 @@ from launch.substitutions import Command, PathJoinSubstitution
 from launch.substitutions.launch_configuration import LaunchConfiguration
 from launch_ros.actions import Node
 
+ARGUMENTS = [
+    DeclareLaunchArgument('use_sim_time', default_value='true',
+                          choices=['true', 'false'],
+                          description='Use sim time'),
+    DeclareLaunchArgument('log_level', default_value='error',
+                          choices=['info', 'warn', 'error'],
+                          description='log level'),
+]
+
+
 
 def generate_launch_description():
     pkg_elm4_description = Path(get_package_share_directory('elm4_description'))
@@ -26,18 +36,13 @@ def generate_launch_description():
             {'use_sim_time': LaunchConfiguration('use_sim_time')},
             {'robot_description': robot_desc},
         ],
+        arguments=['--ros-args', '--log-level', LaunchConfiguration('log_level')],
         remappings=[
             ('/tf', 'tf'),
             ('/tf_static', 'tf_static')
         ]
     )
 
-    # Define LaunchDescription variable
-    ld = LaunchDescription([
-        DeclareLaunchArgument('use_sim_time', default_value='false',
-                              choices=['true', 'false'],
-                              description='use_sim_time')])
-
-    # Add nodes to LaunchDescription
-    ld.add_action(robot_state_publisher)
-    return ld
+    return LaunchDescription(ARGUMENTS + [
+        robot_state_publisher
+    ])
