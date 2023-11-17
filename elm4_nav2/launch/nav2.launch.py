@@ -44,6 +44,7 @@ def generate_launch_description():
                 PathJoinSubstitution(
                     [pkg_nav2_bringup, 'launch', 'navigation_launch.py'])),
             launch_arguments={'use_sim_time': use_sim_time,
+                              'use_robot_state_pub': 'False',
                               'use_composition': 'False',
                               'log_level': LaunchConfiguration('log_level'),
                               'params_file': LaunchConfiguration('params_file')}.items()),

@@ -27,10 +27,10 @@ def generate_launch_description():
     urdf_file = pkg_elm4_description / 'urdf'/ 'elm4.urdf'
     with open(urdf_file, 'r') as f:
         robot_desc = f.read()
-    robot_state_publisher = Node(
+    elm4_state_publisher = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
-        name='robot_state_publisher',
+        name='elm4_state_publisher',
         output='screen',
         parameters=[
             {'use_sim_time': LaunchConfiguration('use_sim_time')},
@@ -44,5 +44,5 @@ def generate_launch_description():
     )
 
     return LaunchDescription(ARGUMENTS + [
-        robot_state_publisher
+        elm4_state_publisher
     ])
